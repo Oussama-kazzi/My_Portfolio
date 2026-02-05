@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #f97316;
+  /* Orange-500 */
+  --color-secondary: #9ca3af;
+  /* Gray-400 */
+  --color-darkBg: #0a0a0a;
+  --color-glass: rgba(255, 255, 255, 0.03);
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  --background-image-hero-pattern: url('/assets/hero_background.png');
+}
+
+@layer base {
+  body {
+    background-color: #000000;
+    color: white;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f97316;
+  /* Orange hover */
+}

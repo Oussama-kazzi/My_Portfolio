@@ -1,0 +1,13 @@
+{
+    "title": "Luxury Legal Firm",
+    "subtitle": "Themis - Authority & Justice",
+    "description": "A high-end, authoritative website for a premium law firm.",
+    "tech": [
+        "React",
+        "Tailwind",
+        "Framer Motion"
+    ],
+    "image": "/assets/legal_firm_project.png",
+    "liveLink": "#",
+    "githubLink": "#"
+}

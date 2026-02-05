@@ -1,12 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import skillsData from '../content/skills.json';
+
 const Skills = () => {
-    const skills = [
-        "React.js", "Next.js", "Node.js", "Express.js",
-        "MongoDB", "JavaScript", "Tailwind CSS", "Framer Motion",
-        "REST APIs", "Git/GitHub", "JWT Auth", "Responsive Design"
-    ];
+    const { skills } = skillsData;
 
     return (
         <section id="skills" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden min-h-screen flex items-center justify-center">

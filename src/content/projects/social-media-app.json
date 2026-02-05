@@ -1,0 +1,13 @@
+{
+    "title": "Social Media App",
+    "subtitle": "Connect & Share",
+    "description": "A full-featured social platform with real-time messaging.",
+    "tech": [
+        "MERN Stack",
+        "Socket.io",
+        "Redux"
+    ],
+    "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop",
+    "liveLink": "#",
+    "githubLink": "#"
+}

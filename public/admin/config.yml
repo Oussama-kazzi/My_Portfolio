@@ -1,0 +1,58 @@
+backend:
+  name: github
+  branch: main
+  repo: Oussama-kazzi/My_Portfolio
+
+local_backend: true
+
+media_folder: "public/assets"
+public_folder: "/assets"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Tech Stack", name: "tech", widget: "list" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Live Link", name: "liveLink", widget: "string", required: false }
+      - { label: "GitHub Link", name: "githubLink", widget: "string", required: false }
+
+  - name: "skills"
+    label: "Skills"
+    files:
+      - label: "Skills List"
+        name: "skills_list"
+        file: "src/content/skills.json"
+        fields:
+          - { label: "Skills", name: "skills", widget: "list" }
+
+  - name: "profile"
+    label: "Profile"
+    files:
+      - label: "About Me"
+        name: "about"
+        file: "src/content/profile.json"
+        fields:
+          - { label: "About Paragraph", name: "about_paragraph", widget: "text" }
+
+  - name: "experience"
+    label: "Experience"
+    folder: "src/content/experience"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Period", name: "period", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Technologies", name: "technologies", widget: "list" }

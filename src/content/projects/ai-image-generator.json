@@ -1,0 +1,13 @@
+{
+    "title": "AI Image Generator",
+    "subtitle": "Creative Tools",
+    "description": "Uses AI to generate unique images from text prompts.",
+    "tech": [
+        "React",
+        "OpenAI API",
+        "Node.js"
+    ],
+    "image": "https://images.unsplash.com/photo-1547954575-855750c57bd3?q=80&w=2070&auto=format&fit=crop",
+    "liveLink": "#",
+    "githubLink": "#"
+}

@@ -2,33 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar } from 'lucide-react';
 
+const experienceFiles = import.meta.glob('../content/experience/*.json', { eager: true });
+const experiences = Object.values(experienceFiles).map((file, index) => {
+    const data = file.default || file;
+    return {
+        id: index + 1,
+        ...data
+    };
+});
+
 const Experience = () => {
-    const experiences = [
-        {
-            id: 1,
-            title: "Senior Fullstack Developer",
-            company: "Tech Solutions Inc.",
-            period: "2024 - Present",
-            description: "Leading development of scalable web applications using React, Node.js, and MongoDB. Mentoring junior developers and implementing best practices.",
-            technologies: ["React", "Node.js", "MongoDB", "AWS"]
-        },
-        {
-            id: 2,
-            title: "Fullstack Developer",
-            company: "Digital Agency",
-            period: "2022 - 2024",
-            description: "Developed and maintained multiple client projects, focusing on responsive design and performance optimization.",
-            technologies: ["Next.js", "Express", "PostgreSQL", "Tailwind"]
-        },
-        {
-            id: 3,
-            title: "Junior Developer",
-            company: "StartUp Co.",
-            period: "2021 - 2022",
-            description: "Built frontend components and integrated APIs for various web applications. Collaborated with design team to implement UI/UX.",
-            technologies: ["JavaScript", "React", "REST APIs", "Git"]
-        }
-    ];
+    console.log('Loaded Experiences:', experiences);
 
     return (
         <section id="experience" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden min-h-screen flex items-center justify-center">

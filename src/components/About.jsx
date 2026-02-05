@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import profileData from '../content/profile.json';
+
 const About = () => {
+    const { about_paragraph } = profileData;
     return (
         <section id="about" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden min-h-screen flex items-center justify-center">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center">
@@ -24,11 +27,7 @@ const About = () => {
                     {/* Paragraphs */}
                     <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6 text-gray-300 leading-relaxed">
                         <p className="text-base md:text-lg">
-                            Hi, I'm <span className="text-primary font-semibold">Oussama Kazzi</span>, a passionate fullstack developer specializing in React, Next.js, Node.js, and MongoDB.
-                            With 2 years of professional experience, I aim to build high-performance, scalable, and beautiful web applications that solve real-world problems.
-                        </p>
-                        <p className="text-base md:text-lg">
-                            My approach combines technical depth with a keen eye for design, ensuring that every project not only functions perfectly under the hood but also provides an exceptional user experience.
+                            {about_paragraph}
                         </p>
                     </div>
                 </motion.div>

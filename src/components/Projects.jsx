@@ -2,49 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
+const projectFiles = import.meta.glob('/src/content/projects/*.json', { eager: true });
+console.log('Project Files found by glob:', Object.keys(projectFiles));
+
+const projects = Object.values(projectFiles).map((file, index) => {
+    const data = file.default || file;
+    return {
+        id: index + 1,
+        ...data
+    };
+});
+
 const Projects = () => {
-    const projects = [
-        {
-            id: 1,
-            title: "Luxury Legal Firm",
-            subtitle: "Themis - Authority & Justice",
-            description: "A high-end, authoritative website for a premium law firm.",
-            tech: ["React", "Tailwind", "Framer Motion"],
-            image: "/assets/legal_firm_project.png",
-            liveLink: "#",
-            githubLink: "#",
-        },
-        {
-            id: 2,
-            title: "E-Commerce Dashboard",
-            subtitle: "Analytics & Management",
-            description: "Comprehensive admin dashboard for online stores.",
-            tech: ["Next.js", "Chart.js", "MongoDB"],
-            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-            liveLink: "#",
-            githubLink: "#",
-        },
-        {
-            id: 3,
-            title: "Social Media App",
-            subtitle: "Connect & Share",
-            description: "A full-featured social platform with real-time messaging.",
-            tech: ["MERN Stack", "Socket.io", "Redux"],
-            image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop",
-            liveLink: "#",
-            githubLink: "#",
-        },
-        {
-            id: 4,
-            title: "AI Image Generator",
-            subtitle: "Creative Tools",
-            description: "Uses AI to generate unique images from text prompts.",
-            tech: ["React", "OpenAI API", "Node.js"],
-            image: "https://images.unsplash.com/photo-1547954575-855750c57bd3?q=80&w=2070&auto=format&fit=crop",
-            liveLink: "#",
-            githubLink: "#",
-        },
-    ];
+    console.log('Processed Projects:', projects);
 
     return (
         <section id="projects" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden min-h-screen flex flex-col justify-center">

@@ -3,7 +3,6 @@ backend:
   branch: main
   repo: Oussama-kazzi/My_Portfolio
 
-local_backend: true
 
 media_folder: "public/assets"
 public_folder: "/assets"

@@ -29,7 +29,7 @@ const Hero = () => {
                     className="w-full md:w-1/2 text-left pl-0 md:pl-10"
                 >
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-tight">
-                        Shaping Web <br />
+                        Web <br />
                         <span className="text-gray-400">Developer</span>
                         <span className="animate-pulse text-primary">|</span>
                     </h2>
@@ -40,17 +40,7 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Massive Bottom Text */}
-            <motion.div
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="relative z-10 w-full overflow-hidden"
-            >
-                <h1 className="text-[20vw] sm:text-[18vw] md:text-[16vw] lg:text-[14vw] leading-none font-bold text-white tracking-widest text-center whitespace-nowrap opacity-90 select-none mix-blend-overlay">
-                    WEB.DEV
-                </h1>
-            </motion.div>
+
         </section>
     );
 };

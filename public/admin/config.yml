@@ -31,7 +31,17 @@ collections:
         name: "skills_list"
         file: "src/content/skills.json"
         fields:
-          - { label: "Skills", name: "skills", widget: "list" }
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category Name", name: "category", widget: "string" }
+              - label: "Skills"
+                name: "skills"
+                widget: "list"
+                fields:
+                  - { label: "Skill Name", name: "name", widget: "string" }
+                  - { label: "Icon Name (Lucide)", name: "icon", widget: "string" }
 
   - name: "profile"
     label: "Profile"
@@ -41,17 +51,3 @@ collections:
         file: "src/content/profile.json"
         fields:
           - { label: "About Paragraph", name: "about_paragraph", widget: "text" }
-
-  - name: "experience"
-    label: "Experience"
-    folder: "src/content/experience"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{title}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Company", name: "company", widget: "string" }
-      - { label: "Period", name: "period", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Technologies", name: "technologies", widget: "list" }

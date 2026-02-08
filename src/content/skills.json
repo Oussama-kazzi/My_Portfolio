@@ -1,16 +1,84 @@
 {
-    "skills": [
-        "React.js",
-        "Next.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "JavaScript",
-        "Tailwind CSS",
-        "Framer Motion",
-        "REST APIs",
-        "Git/GitHub",
-        "JWT Auth",
-        "Responsive Design"
+    "categories": [
+        {
+            "category": "Frontend",
+            "skills": [
+                {
+                    "name": "React.js",
+                    "icon": "Atom"
+                },
+                {
+                    "name": "Next.js",
+                    "icon": "Layers"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": "FileCode"
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": "Wind"
+                },
+                {
+                    "name": "Framer Motion",
+                    "icon": "Activity"
+                },
+                {
+                    "name": "Responsive Design",
+                    "icon": "MonitorSmartphone"
+                }
+            ]
+        },
+        {
+            "category": "Backend",
+            "skills": [
+                {
+                    "name": "Node.js",
+                    "icon": "Server"
+                },
+                {
+                    "name": "Express.js",
+                    "icon": "Terminal"
+                },
+                {
+                    "name": "REST APIs",
+                    "icon": "Globe"
+                },
+                {
+                    "name": "JWT Auth",
+                    "icon": "Lock"
+                }
+            ]
+        },
+        {
+            "category": "Databases",
+            "skills": [
+                {
+                    "name": "MongoDB",
+                    "icon": "Database"
+                }
+            ]
+        },
+        {
+            "category": "Version Control",
+            "skills": [
+                {
+                    "name": "Git/GitHub",
+                    "icon": "Github"
+                }
+            ]
+        },
+        {
+            "category": "DevOps & Deployment",
+            "skills": []
+        },
+        {
+            "category": "Security",
+            "skills": []
+        },
+        {
+            "category": "Tools & Others",
+            "skills": []
+        }
     ]
 }

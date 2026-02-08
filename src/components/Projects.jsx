@@ -36,10 +36,10 @@ const Projects = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-12 sm:mb-16 md:mb-20"
+                    className="text-center mb-8 sm:mb-12"
                 >
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">Projects</h2>
-                    <p className="text-gray-400 text-sm sm:text-base">Selected works</p>
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2">Projects</h2>
+                    <p className="text-gray-400 text-sm">Selected works</p>
                 </motion.div>
 
                 {/* Projects Grid */}
@@ -54,7 +54,7 @@ const Projects = () => {
                             className="group relative bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-300"
                         >
                             {/* Image */}
-                            <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+                            <div className="relative h-40 sm:h-48 overflow-hidden">
                                 <img
                                     src={project.image}
                                     alt={project.title}
@@ -64,17 +64,17 @@ const Projects = () => {
                             </div>
 
                             {/* Content */}
-                            <div className="p-6">
-                                <p className="text-primary text-xs font-bold uppercase mb-2">{project.subtitle}</p>
-                                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{project.title}</h3>
-                                <p className="text-gray-400 text-sm mb-4 line-clamp-2">{project.description}</p>
+                            <div className="p-4">
+                                <p className="text-primary text-[10px] font-bold uppercase mb-1">{project.subtitle}</p>
+                                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{project.title}</h3>
+                                <p className="text-gray-400 text-xs mb-3 line-clamp-2">{project.description}</p>
 
                                 {/* Tech Stack */}
-                                <div className="flex flex-wrap gap-2 mb-4">
+                                <div className="flex flex-wrap gap-1.5 mb-3">
                                     {project.tech.map((tech, i) => (
                                         <span
                                             key={i}
-                                            className="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-gray-300"
+                                            className="text-[10px] px-1.5 py-0.5 bg-white/5 border border-white/10 rounded text-gray-300"
                                         >
                                             {tech}
                                         </span>
@@ -85,16 +85,16 @@ const Projects = () => {
                                 <div className="flex gap-4">
                                     <a
                                         href={project.liveLink}
-                                        className="flex items-center gap-2 text-sm text-white hover:text-primary transition-colors"
+                                        className="flex items-center gap-1.5 text-xs text-white hover:text-primary transition-colors"
                                     >
-                                        <ExternalLink size={16} />
+                                        <ExternalLink size={14} />
                                         <span>Live Demo</span>
                                     </a>
                                     <a
                                         href={project.githubLink}
-                                        className="flex items-center gap-2 text-sm text-white hover:text-primary transition-colors"
+                                        className="flex items-center gap-1.5 text-xs text-white hover:text-primary transition-colors"
                                     >
-                                        <Github size={16} />
+                                        <Github size={14} />
                                         <span>Code</span>
                                     </a>
                                 </div>

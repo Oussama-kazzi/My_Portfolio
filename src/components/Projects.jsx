@@ -1,110 +1,130 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, ArrowUpRight } from "lucide-react";
 
-const projectFiles = import.meta.glob('/src/content/projects/*.json', { eager: true });
-console.log('Project Files found by glob:', Object.keys(projectFiles));
+const FONT_STACK =
+  "'Inter', 'Helvetica Neue', 'Arial Black', Arial, sans-serif";
+
+const projectFiles = import.meta.glob("/src/content/projects/*.json", {
+  eager: true,
+});
 
 const projects = Object.values(projectFiles).map((file, index) => {
-    const data = file.default || file;
-    return {
-        id: index + 1,
-        ...data
-    };
+  const data = file.default || file;
+  return { id: index + 1, ...data };
 });
 
 const Projects = () => {
-    console.log('Processed Projects:', projects);
+  return (
+    <section id="projects" className="relative bg-white overflow-hidden">
+      {/* Grid decoration */}
+      <div
+        className="absolute inset-0 pointer-events-none select-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          opacity: 0.5,
+        }}
+      />
 
-    return (
-        <section id="projects" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden min-h-screen flex flex-col justify-center">
-            {/* Vertical Grid Lines */}
-            <div className="absolute inset-0 flex justify-between pointer-events-none z-0 px-4 sm:px-8 md:px-12 lg:px-20">
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-            </div>
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 py-28 sm:py-36 md:py-44 w-full">
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-xs font-bold tracking-[0.25em] uppercase text-neutral-400 mb-8"
+        >
+          Work
+        </motion.p>
 
-            {/* Glow Effect */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10"></div>
+        {/* Large headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          style={{
+            fontFamily: FONT_STACK,
+            fontWeight: 900,
+            letterSpacing: "-0.03em",
+            lineHeight: 0.92,
+            color: "#111111",
+          }}
+          className="text-[clamp(42px,8vw,110px)] mb-16"
+        >
+          Selected Works
+        </motion.h2>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full relative z-10">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-8 sm:mb-12"
+        {/* Projects Grid — 3 cols on desktop like the reference */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.07 }}
+              viewport={{ once: true }}
+              className="group flex flex-col bg-white border border-[#e5e5e5] rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* Image — fills top ~60% */}
+              <div
+                className="relative overflow-hidden bg-neutral-100"
+                style={{ paddingBottom: "62%" }}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
+                {/* Title */}
+                <h3
+                  className="text-base font-black text-[#111111] mb-1 leading-tight"
+                  style={{ fontFamily: FONT_STACK, letterSpacing: "-0.02em" }}
                 >
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2">Projects</h2>
-                    <p className="text-gray-400 text-sm">Selected works</p>
-                </motion.div>
+                  {project.title}
+                </h3>
 
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            className="group relative bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-300"
-                        >
-                            {/* Image */}
-                            <div className="relative h-40 sm:h-48 overflow-hidden">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                            </div>
+                {/* Subtitle / category */}
+                <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-neutral-400 mb-3">
+                  {project.subtitle}
+                </p>
 
-                            {/* Content */}
-                            <div className="p-4">
-                                <p className="text-primary text-[10px] font-bold uppercase mb-1">{project.subtitle}</p>
-                                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{project.title}</h3>
-                                <p className="text-gray-400 text-xs mb-3 line-clamp-2">{project.description}</p>
+                {/* Spacer pushes action row to bottom */}
+                <div className="flex-1" />
 
-                                {/* Tech Stack */}
-                                <div className="flex flex-wrap gap-1.5 mb-3">
-                                    {project.tech.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="text-[10px] px-1.5 py-0.5 bg-white/5 border border-white/10 rounded text-gray-300"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
+                {/* Divider */}
+                <div className="w-full h-px bg-[#f0f0f0] mb-3" />
 
-                                {/* Links */}
-                                <div className="flex gap-4">
-                                    <a
-                                        href={project.liveLink}
-                                        className="flex items-center gap-1.5 text-xs text-white hover:text-primary transition-colors"
-                                    >
-                                        <ExternalLink size={14} />
-                                        <span>Live Demo</span>
-                                    </a>
-                                    <a
-                                        href={project.githubLink}
-                                        className="flex items-center gap-1.5 text-xs text-white hover:text-primary transition-colors"
-                                    >
-                                        <Github size={14} />
-                                        <span>Code</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                {/* Action row — matches screenshot layout */}
+                <div className="flex items-center justify-between">
+                  <a
+                    href={project.githubLink}
+                    className="text-xs font-bold tracking-[0.12em] uppercase text-[#111111] hover:text-neutral-500 transition-colors"
+                  >
+                    View Code
+                  </a>
+                  <a
+                    href={project.liveLink}
+                    className="w-8 h-8 rounded-full bg-[#111111] flex items-center justify-center text-white hover:bg-neutral-700 transition-colors active:scale-95"
+                    aria-label={`Open ${project.title}`}
+                  >
+                    <ArrowUpRight size={14} />
+                  </a>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Projects;

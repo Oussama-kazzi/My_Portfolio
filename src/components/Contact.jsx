@@ -1,100 +1,115 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Phone } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin, Phone, ArrowRight } from "lucide-react";
+
+const FONT_STACK =
+  "'Inter', 'Helvetica Neue', 'Arial Black', Arial, sans-serif";
+
+const contactLinks = [
+  { label: "Email", icon: Mail, href: "mailto:oussamakazzi@example.com" },
+  { label: "GitHub", icon: Github, href: "#" },
+  { label: "LinkedIn", icon: Linkedin, href: "#" },
+  {
+    label: "WhatsApp",
+    icon: Phone,
+    href: "https://wa.me/1234567890",
+    external: true,
+  },
+];
 
 const Contact = () => {
-    return (
-        <section id="contact" className="py-20 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden min-h-screen flex items-center justify-center">
-            {/* Vertical Grid Lines */}
-            <div className="absolute inset-0 flex justify-between pointer-events-none z-0 px-4 sm:px-8 md:px-12 lg:px-20">
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-            </div>
+  return (
+    <section id="contact" className="relative bg-[#f7f7f7] overflow-hidden">
+      {/* Grid decoration */}
+      <div
+        className="absolute inset-0 pointer-events-none select-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #ebebeb 1px, transparent 1px), linear-gradient(to bottom, #ebebeb 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          opacity: 0.6,
+        }}
+      />
 
-            {/* Glow Effect */}
-            <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-primary/10 to-transparent blur-3xl -z-10"></div>
+      <div className="relative max-w-5xl mx-auto px-6 sm:px-8 py-28 sm:py-36 md:py-44">
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-xs font-bold tracking-[0.25em] uppercase text-neutral-400 mb-8"
+        >
+          Contact
+        </motion.p>
 
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    {/* Title */}
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 sm:mb-10 md:mb-12 text-white">
-                        Get In Touch
-                    </h2>
+        {/* Large headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          style={{
+            fontFamily: FONT_STACK,
+            fontWeight: 900,
+            letterSpacing: "-0.03em",
+            lineHeight: 0.92,
+            color: "#111111",
+          }}
+          className="text-[clamp(42px,8vw,110px)] mb-6"
+        >
+          Let's Work
+          <br />
+          Together
+        </motion.h2>
 
-                    {/* Contact Links */}
-                    <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-14 md:mb-16">
-                        <motion.a
-                            href="mailto:oussamakazzi@example.com"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: 0.1 }}
-                            viewport={{ once: true }}
-                            className="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-lg hover:border-primary/50 hover:bg-white/10 transition-all duration-300 text-gray-300 hover:text-white"
-                        >
-                            <Mail className="w-5 h-5" />
-                            <span className="text-sm md:text-base">Email</span>
-                        </motion.a>
+        {/* Divider */}
+        <div className="w-12 h-px bg-[#111111] mb-12" />
 
-                        <motion.a
-                            href="#"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: 0.2 }}
-                            viewport={{ once: true }}
-                            className="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-lg hover:border-white/50 hover:bg-white/10 transition-all duration-300 text-gray-300 hover:text-white"
-                        >
-                            <Github className="w-5 h-5" />
-                            <span className="text-sm md:text-base">GitHub</span>
-                        </motion.a>
+        {/* Contact link pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap gap-3 mb-20"
+        >
+          {contactLinks.map(({ label, icon: Icon, href, external }, i) => (
+            <motion.a
+              key={label}
+              href={href}
+              {...(external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              viewport={{ once: true }}
+              className="group inline-flex items-center gap-2.5 px-6 py-3 border border-[#D9D9D9] bg-white rounded-full text-sm font-bold text-[#111111] hover:bg-[#111111] hover:text-white hover:border-[#111111] transition-all duration-300 active:scale-95"
+            >
+              <Icon size={15} />
+              {label}
+              <ArrowRight
+                size={13}
+                className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+              />
+            </motion.a>
+          ))}
+        </motion.div>
 
-                        <motion.a
-                            href="#"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: 0.3 }}
-                            viewport={{ once: true }}
-                            className="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-lg hover:border-blue-400/50 hover:bg-white/10 transition-all duration-300 text-gray-300 hover:text-white"
-                        >
-                            <Linkedin className="w-5 h-5" />
-                            <span className="text-sm md:text-base">LinkedIn</span>
-                        </motion.a>
-
-                        <motion.a
-                            href="https://wa.me/1234567890"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: 0.4 }}
-                            viewport={{ once: true }}
-                            className="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-lg hover:border-green-400/50 hover:bg-white/10 transition-all duration-300 text-gray-300 hover:text-white"
-                        >
-                            <Phone className="w-5 h-5" />
-                            <span className="text-sm md:text-base">WhatsApp</span>
-                        </motion.a>
-                    </div>
-
-                    {/* Footer */}
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                        viewport={{ once: true }}
-                        className="text-gray-500 text-sm"
-                    >
-                        © {new Date().getFullYear()} Oussama Kazzi. All rights reserved.
-                    </motion.p>
-                </motion.div>
-            </div>
-        </section>
-    );
+        {/* Footer */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-xs font-semibold tracking-[0.15em] uppercase text-neutral-400"
+        >
+          © {new Date().getFullYear()} Oussama Kazzi — All rights reserved.
+        </motion.p>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;

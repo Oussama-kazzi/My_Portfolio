@@ -1,49 +1,103 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import logo from "../assets/logo.png";
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+const FONT_STACK =
+  "'Inter', 'Helvetica Neue', 'Arial Black', Arial, sans-serif";
+
 const Hero = () => {
-    return (
-        <section id="hero" className="relative min-h-screen h-screen flex flex-col justify-between overflow-hidden pt-16 sm:pt-20">
-            {/* Vertical Grid Lines */}
-            <div className="absolute inset-0 flex justify-between pointer-events-none z-0 px-4 sm:px-8 md:px-12 lg:px-20">
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-                <div className="w-px h-full bg-white/5"></div>
-            </div>
+  return (
+    <section
+      id="hero"
+      className="relative min-h-screen bg-white flex flex-col items-center justify-center overflow-x-hidden"
+    >
+      {/* Subtle grid decoration */}
+      <div
+        className="absolute inset-0 pointer-events-none select-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          opacity: 0.5,
+        }}
+      />
 
-            {/* Glow Effect */}
-            <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-primary/10 to-transparent blur-3xl -z-10"></div>
+      {/* ── Main content ── */}
+      <div className="relative w-full flex flex-col items-center px-4 pt-24 pb-20">
+        {/* Typography + Portrait block */}
+        <div className="relative w-full flex flex-col items-center">
+          {/* ① Main headline — topmost text layer */}
+          <motion.h1
+            initial={{ opacity: 0, y: -28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="relative text-center select-none"
+            style={{
+              fontFamily: FONT_STACK,
+              fontSize: "clamp(52px, 13.5vw, 210px)",
+              fontWeight: 900,
+              color: "#111111",
+              letterSpacing: "-0.03em",
+              lineHeight: 0.9,
+              zIndex: 5,
+            }}
+          >
+            Web Developer
+          </motion.h1>
 
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 sm:px-8 md:px-12 lg:px-16 mt-8 sm:mt-10 md:mt-0">
+          {/* ② Background outline text — lowest layer */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.18 }}
+            aria-hidden="true"
+            className="relative w-full flex justify-center overflow-hidden"
+            style={{ zIndex: 0 }}
+          >
+            <span
+              className="block text-center whitespace-nowrap"
+              style={{
+                fontFamily: FONT_STACK,
+                fontSize: "clamp(42px, 11vw, 185px)",
+                fontWeight: 800,
+                WebkitTextStroke: "1.5px #D9D9D9",
+                MozTextStroke: "1.5px #D9D9D9",
+                color: "transparent",
+                letterSpacing: "-0.03em",
+                lineHeight: 0.9,
+                opacity: 0.4,
+              }}
+            >
+              &amp; Product Builder
+            </span>
+          </motion.div>
+        </div>
 
-
-
-                {/* Text */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="w-full max-w-4xl text-center"
-                >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-                        Web <br className="hidden sm:block" />
-                        <span className="text-gray-400">Developer</span>
-                        <span className="animate-pulse text-primary ml-2">|</span>
-                    </h2>
-
-                    <div className="flex justify-center">
-                        <a href="#projects" className="inline-flex items-center text-base sm:text-lg font-semibold text-white hover:text-primary transition-colors group mt-4 sm:mt-6">
-                            Discover <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                        </a>
-                    </div>
-                </motion.div>
-            </div>
-
-
-        </section>
-    );
+        {/* ── CTA Buttons ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.52 }}
+          className="relative flex flex-col sm:flex-row items-center gap-4 mt-14 md:mt-16"
+          style={{ zIndex: 30 }}
+        >
+          <a
+            href="#projects"
+            className="group inline-flex items-center justify-center gap-3 px-9 py-4 bg-[#111111] text-white text-xs font-bold tracking-[0.18em] uppercase rounded-full hover:bg-neutral-800 transition-all duration-300 active:scale-95"
+          >
+            View Projects
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center gap-3 px-9 py-4 border-2 border-[#111111] text-[#111111] text-xs font-bold tracking-[0.18em] uppercase rounded-full hover:bg-[#111111] hover:text-white transition-all duration-300 active:scale-95"
+          >
+            Contact Me
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;
